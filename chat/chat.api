@@ -1,0 +1,19 @@
+type WsConnectRequest {
+	ID int `path:"id"`
+}
+
+type WsRequestItem {
+	Message string `json:"message"`
+	ToID    []int  `json:"to_id,omitempty"`
+}
+
+type WsResponseItem {
+	Message string `json:"message"`
+	FromID  int    `json:"from_id"`
+	Time    int64  `json:"time"`
+}
+
+service chat-api {
+	@handler WsHandler
+	get /:id
+}
